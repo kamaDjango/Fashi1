@@ -1,0 +1,112 @@
+{% extends 'index.html' %}
+{% load static  %}
+{% block title%}
+<title>Fashi | Shopping-Cart</title>
+{% endblock %}
+{% block body %}    
+<!-- Breadcrumb Section Begin -->
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text product-more">
+                        <a href="/"><i class="fa fa-home"></i> Home</a>
+                        <span>Seller Profile</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cart-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th class="p-name">Name</th>
+                                    <th>User Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address Line1</th>
+                                    <th>Address Line2</th>
+                                    <th>Address Line3</th>
+                                    <th>PIN</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cart-pic first-row"><img src="{{User.pic.url}}"alt=""></td>
+                                    <td class="cart-title first-row">
+                                        <h5>{{User.name}}</h5>
+                                    </td>
+                                    <td class="p-price first-row">{{User.username}}</td>
+                                    <td class="p-price first-row">{{User.email}}</td>
+                                    <td class="p-price first-row">{{User.phone}}</td>
+                                    <td class="p-price first-row">{{User.addressline1}}</td>
+                                    <td class="p-price first-row">{{User.addressline2}}</td>
+                                    <td class="p-price first-row">{{User.addressline3}}</td>
+                                    <td class="p-price first-row">{{User.pin}}</td>
+                                    <td class="p-price first-row">{{User.city}}</td>
+                                    <td class="p-price first-row">{{User.state}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="/editProfileSeller/"  class="primary-btn pd-cart">Edit Profile</a>
+                        <a href="/addProduct/"  class="primary-btn pd-cart">Add Product</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section Begin -->
+
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cart-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th class="p-name">Product Name</th>
+                                    <th>Price</th>
+                                    <th>Discount</th>
+                                    <th>Final Amount</th>
+                                    <th>Stock</th>
+                                    <th>Color</th>
+                                    <th>Size</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in Product %}
+                                <tr>
+                                    <td class="cart-pic first-row"><img src="{{i.pic1.url}}" alt=""></td>
+                                    <td class="cart-title first-row">
+                                        <h5>{{i.name}}</h5>
+                                    </td>
+                                    <td class="p-price first-row">{{i.basePrice}}</td>
+                                    <td class="total-price first-row">{{i.discount}}%</td>
+                                    <td class="total-price first-row">{{i.finalPrice}}</td>
+                                    <td class="total-price first-row">{{i.stock}}</td>
+                                    <td class="total-price first-row">{{i.color}}</td>
+                                    <td class="total-price first-row">{{i.size}}</td>
+                                    <td><a href="/editProduct/{{i.pid}}/"  class="primary-btn pd-cart">Edit</a></td>
+                                    <td><a href="/deleteProduct/{{i.pid}}/"  class="primary-btn pd-cart">Delete</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

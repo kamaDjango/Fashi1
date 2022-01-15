@@ -1,0 +1,103 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load cart %}
+{% block title%}
+<title>Fashi | Shopping-Cart</title>
+{% endblock %}
+{% block body %}
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text product-more">
+                    <a href="/"><i class="fa fa-home"></i> Home</a>
+                    <a href="/shop/">Shop</a>
+                    <span>Shopping Cart</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Section Begin -->
+
+<!-- Shopping Cart Section Begin -->
+<section class="shopping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="cart-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th class="p-name">Product Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Color</th>
+                                <th>Size</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in Products %}
+                            <tr>
+                                <td class="cart-pic first-row"><img src="{{i.pic1.url}}"
+                                        style="width: 100px;width: 100px;" alt=""></td>
+                                <td class="cart-title first-row">
+                                    <h5>{{i.name}}</h5>
+                                </td>
+                                <td class="p-price first-row">Rs {{i.finalPrice}}</td>
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <td class="qua-col first-row">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" name="q" value="{{ request|quantity:i.pid }}">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="total-price first-row">Rs {{request|finalPrice:i.pid}}</td>
+                                    <td class="p-price first-row">{{i.color}}</td>
+                                    <td class="p-price first-row">{{i.size}}</td>
+                                    <input type="hidden" name="pid" value="{{i.pid}}">
+                                    <td><button type="submit" class="primary-btn pd-cart"
+                                            style="width: 100%;margin-top: 20px;padding: 10px; color: white;border: none;">Update</button>
+                                    </td>
+                                    <td><a class="primary-btn pd-cart" href="/deleteCart/{{i.pid}}/"
+                                            style="width: 100%;margin-top: 20px;padding: 10px;color: white;"><i
+                                                class="ti-close"></i></a></td>
+                                </form>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cart-buttons">
+                            <a href="/shop/d/d/d/" class="primary-btn continue-shop">Continue shopping</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 offset-lg-4">
+                        <div class="proceed-checkout">
+                            <ul>
+                                <li class="subtotal">Subtotal <span>Rs {{SubTotal}}</span></li>
+                                <li class="subtotal">Shipping <span>Rs {{Shipping}}</span></li>
+                                <li class="cart-total">Total <span>Rs {{Total}}</span></li>
+                            </ul>
+                            {% if Total %}
+                            <a href="/checkout/" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shopping Cart Section End -->
+{% endblock %}

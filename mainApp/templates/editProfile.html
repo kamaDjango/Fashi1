@@ -1,0 +1,85 @@
+{% extends 'index.html' %}
+{% load static  %}
+{% block title%}
+<title>Fashi | Register</title>
+{% endblock %}
+{% block body %}
+    <!-- Breadcrumb Section Begin -->
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home"></i> Home</a>
+                        <span>Update Seller Profile/span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Form Section Begin -->
+
+    <!-- Register Section Begin -->
+    <div class="register-login-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="register-form">
+                        <h2>Update Seller profile</h2>
+                        {% for i in messages %}
+                            <p>{{i}}</p>
+                        {% endfor %}
+                        <form action="#" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="group-input">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" value="{{User.name}}">
+                            </div>
+                            <div class="group-input">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" value="{{User.email}}">
+                            </div>
+                            <div class="group-input">
+                                <label for="phone">Phone Number</label>
+                                <input type="text" id="phone" name="phone" value="{{User.phone}}">
+                            </div>
+                            <div class="group-input">
+                                <label for="pic">Profile Picture</label>
+                                <input type="file" id="pic" name="pic">
+                            </div>
+                            <div class="group-input">
+                                <label for="addressline1">Address Line1</label>
+                                <input type="text" id="addressline1" name="addressline1" value="{{User.addressline1}}">
+                            </div>
+                            <div class="group-input">
+                                <label for="addressline2">Address Line2</label>
+                                <input type="text" id="addressline2" name="addressline2" value="{{User.addressline2}}">
+                            </div>
+                            <div class="group-input">
+                                <label for="addressline3">Addressline3</label>
+                                <input type="text" id="addressline3" name="addressline3" value="{{User.addressline3}}">
+                            </div>
+                            <div class="group-input">
+                                <label for="pin">PIN Code</label>
+                                <input type="text" id="pin" name="pin" value="{{User.pin}}">
+                            </div>
+                            <div class="group-input">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city" value="{{User.city}}">
+                            </div>
+                            <div class="group-input">
+                                <label for="state">State</label>
+                                <input type="text" id="state" name="state" value="{{User.state}}">
+                            </div>
+                            <button type="submit" class="site-btn register-btn">Update Profile</button>
+                        </form>
+                        <div class="switch-login">
+                            <a href="/login/" class="or-login">Or Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Register Form Section End -->
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title%}
+<title>Fashi | Check-Out</title>
+{% endblock %}
+{% block body %}
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text product-more">
+                    <a href="/"><i class="fa fa-home"></i> Home</a>
+                    <span>Add Product</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Section Begin -->
+
+<!-- Shopping Cart Section Begin -->
+<section class="checkout-section spad">
+    <div class="container">
+        <form action="#" method="post" class="checkout-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>Update Product Details</h4>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label for="name">Product Name<span>*</span></label>
+                            <input type="text" id="name" name="name" value="{{Product.name}}">
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="maincat">Main Category</label>
+                            <select name="maincat">
+                                {% for i in MC %}
+                                <option value="{{i}}">{{i.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="subcat">Sub Category</label>
+                            <select name="subcat">
+                                {% for i in SC %}
+                                <option value="{{i}}">{{i.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="brand">Brand</label>
+                            <select name="brand">
+                                {% for i in BR %}
+                                <option value="{{i}}">{{i.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="stock">Stock</label>
+                            <select name="stock">
+                                <option value="True">In Stock</option>
+                                <option value="False">Out of Stock</option>
+                            </select>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="col-lg-6">
+                            <label for="baseprice">Base Price<span>*</span></label>
+                            <input type="text" id="baseprice" name="baseprice" value="{{Product.basePrice}}">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="discount">Discount</label>
+                            <input type="text" id="discount" name="discount" value="{{Product.discount}}">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="color">Color<span>*</span></label>
+                            <input type="text" id="color" name="color" value="{{Product.color}}">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="size">Size</label>
+                            <input type="text" id="size" name="size" value="{{Product.size}}">
+                        </div>
+                        <div class="col-lg-12">
+                            <label for="description">Description</label>
+                            <textarea name="description" id="description" cols="100" rows="5">{{Product.description}}</textarea>
+                        </div>
+                        <div class="col-lg-12">
+                            <label for="specification">Specification</label>
+                            <textarea name="specification" id="specification" cols="100" rows="5">{{Product.specification}}</textarea>
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="pic1">Pic1</label>
+                            <input type="file" name="pic1" id="pic1">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="pic2">Pic2</label>
+                            <input type="file" name="pic2" id="pic2">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="pic3">Pic3</label>
+                            <input type="file" name="pic3" id="pic3">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="pic1">Pic4</label>
+                            <input type="file" name="pic4" id="pic4s">
+                        </div>
+                        <button type="submit" style="width: 50%;border-radius: 10px;margin-left: 25%;" class="primary-btn pd-cart">Add Product</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- Shopping Cart Section End -->
+
+{% endblock %}
